@@ -43,6 +43,11 @@ public final class ClientData {
         cdEnd[2] = tick + p.cd2();
     }
 
+    /** Returns whether the client has unlocked the talent at the given index. */
+    public static boolean hasTalent(int index) {
+        return index >= 0 && index < Long.SIZE && (talents & (1L << index)) != 0;
+    }
+
     public static int cooldownTicks(int slot) {
         return (int) Math.max(0, cdEnd[slot] - tick);
     }
